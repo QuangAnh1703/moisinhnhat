@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mời bạn dự sinh nhật</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-image: url('anhsn.jpg'); /* Thay đường dẫn đến ảnh của bạn */
+            background-size: auto 80%; /* Đảm bảo ảnh được căn chỉnh chiều cao */
+            background-position: center top; /* Căn giữa phía trên ảnh */
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: white;
+            height: 100vh; /* Đặt chiều cao toàn bộ cửa sổ */
+            display: flex;
+            flex-direction: column; /* Căn chỉnh theo chiều dọc */
+            justify-content: flex-end; /* Đẩy tất cả nội dung xuống dưới cùng */
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            color: black;
+        }
+        h1 {
+            color: #ff4081;
+            margin: 20px 0; /* Khoảng cách dưới tiêu đề */
+        }
+        .options {
+            display: flex; /* Sử dụng flexbox cho các lựa chọn */
+            justify-content: space-between; /* Chia đều không gian giữa các lựa chọn */
+            width: 100%; /* Đảm bảo các lựa chọn chiếm toàn bộ chiều rộng */
+            margin-bottom: 20px; /* Khoảng cách dưới lựa chọn */
+        }
+        .option {
+            cursor: pointer; /* Hiển thị con trỏ chuột khi di chuột qua */
+            background-color: #ff4081;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            flex: 1; /* Chiếm toàn bộ chiều rộng của mỗi phần tử */
+            margin: 0 5px; /* Khoảng cách giữa các phần tử */
+        }
+        .option:hover {
+            background-color: #d8376b; /* Màu sắc khi di chuột qua */
+        }
+        
+        /* Thời gian Section Style */
+        .time-info {
+            display: none; /* Ẩn thông tin ban đầu */
+            margin: 20px 0; /* Khoảng cách giữa các phần thông tin */
+            padding: 10px;
+            background-color: #ffeb3b; /* Màu nền khác cho phần thời gian */
+            color: black;
+            border: 2px solid #fbc02d; /* Viền khác cho phần thời gian */
+            border-radius: 8px; /* Bo góc */
+            text-align: center; /* Căn giữa cho nội dung */
+            width: 100%; /* Đảm bảo thời gian chiếm toàn bộ chiều rộng */
+        }
+
+        /* Địa điểm Section Style */
+        .location-info {
+            display: none; /* Ẩn thông tin ban đầu */
+            margin: 20px 0; /* Khoảng cách giữa các phần thông tin */
+            padding: 10px;
+            background-color: #4caf50; /* Màu nền khác cho phần địa điểm */
+            color: white;
+            border: 2px solid #388e3c; /* Viền khác cho phần địa điểm */
+            border-radius: 8px; /* Bo góc */
+            text-align: center; /* Căn giữa cho địa điểm */
+            width: 100%; /* Đảm bảo địa điểm chiếm toàn bộ chiều rộng */
+            max-width: 80%; /* Đặt chiều rộng tối đa */
+            margin-left: auto; /* Căn trái tự động */
+            margin-right: auto; /* Căn phải tự động */
+        }
+
+        a {
+            color: #ffeb3b; /* Màu chữ liên kết khác cho nổi bật */
+            text-decoration: none; /* Bỏ gạch chân */
+        }
+        a:hover {
+            text-decoration: underline; /* Gạch chân khi di chuột qua */
+        }
+        .footer {
+            margin-top: 20px; /* Khoảng cách giữa nội dung và chân trang */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Mời các bạn đến dự sinh nhật của Quang Anh HandSome và DePvil!</h1>
+        <div class="options">
+            <div class="option" onclick="toggleInfo('timeInfo')">Thời gian</div>
+            <div class="option" onclick="toggleInfo('locationInfo')">Địa điểm</div>
+        </div>
+
+        <!-- Thời gian Section -->
+        <div id="timeInfo" class="time-info">
+            <span>Thời gian: 18:30 26/10/2024</span>
+        </div>
+        
+        <!-- Địa điểm Section -->
+        <div id="locationInfo" class="location-info">
+            <span>Địa điểm:</span>
+            <a href="https://maps.app.goo.gl/BaYsZizDmWuoNs9Q7?g_st=ic" target="_blank">P. Nguyễn Cơ Thạch, Mỹ Đình, Nam Từ Liêm, Hà Nội</a>
+        </div>
+
+        <div class="footer">
+            <p>Chúng tôi rất mong bạn có thể đến tham dự bữa tiệc sinh nhật của chúng tôi!</p>
+        </div>
+    </div>
+
+    <script>
+        function toggleInfo(infoId) {
+            // Lấy tất cả các phần thông tin
+            const infos = document.querySelectorAll('.time-info, .location-info');
+            // Ẩn tất cả các phần thông tin
+            infos.forEach(info => {
+                if (info.id === infoId) {
+                    info.style.display = info.style.display === 'none' || info.style.display === '' ? 'block' : 'none';
+                } else {
+                    info.style.display = 'none'; // Ẩn các phần không được chọn
+                }
+            });
+        }
+    </script>
+</body>
+</html>
